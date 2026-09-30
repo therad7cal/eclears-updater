@@ -1,0 +1,14 @@
+# Local state is runtime data, not source code
+tracker_state.json
+*.tmp
+
+# Secrets and local environment files
+.env
+.env.*
+!.env.example
+
+# Python files
+__pycache__/
+*.py[cod]
+.venv/
+venv/

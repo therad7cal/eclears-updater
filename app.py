@@ -11,7 +11,9 @@ import scratchattach as scratch3
 from flask import Flask, jsonify
 
 app = Flask(__name__)
-
+eclears = 0
+rate_per_hour = 0
+totalclears = 0
 STATE_FILE = os.getenv("STATE_FILE", "tracker_state.json")
 API_URL = os.getenv("API_URL", "https://tgrcode.com/mm2/user_info/HQ6-63D-94G")
 SCRATCH_USERNAME = os.environ["SCRATCH_USERNAME"]

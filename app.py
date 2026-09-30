@@ -4,6 +4,7 @@ import os
 import threading
 import time
 from datetime import datetime, timezone
+import random
 
 import requests
 import scratchattach as scratch3
@@ -17,6 +18,7 @@ SCRATCH_USERNAME = os.environ["SCRATCH_USERNAME"]
 SCRATCH_PASSWORD = os.environ["SCRATCH_PASSWORD"]
 PROJECT_ID = int(os.getenv("PROJECT_ID", "1363601841"))
 UPDATE_INTERVAL = int(os.getenv("UPDATE_INTERVAL", "60"))
+
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger(__name__)
@@ -55,7 +57,9 @@ def run_updater():
                 response = http.get(API_URL, timeout=15)
                 response.raise_for_status()
                 data = response.json()
-
+                global eclears
+                global totalclears
+                global rate_per_hour
                 eclears = int(data.get("expert_highscore", 0))
                 totalclears = int(data.get("courses_cleared", 0))
                 current_time = time.time()
@@ -83,7 +87,11 @@ def run_updater():
 
 @app.get("/")
 def home():
-    return jsonify({"status": "ok", "service": "eclears-updater"})
+    return jsonify({"expert_clears": eclears, "totalclears": totalclears, "rate": rate_per_hour, "sessioncookiethingyOwO": random.randint(100000,999999)})
+    
+@app.get("/uwuimsogayyy")
+def home():
+    return jsonify({"OwO": "UwU"})
 
 
 @app.get("/health")

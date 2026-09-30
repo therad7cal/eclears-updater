@@ -90,7 +90,7 @@ def home():
     return jsonify({"expert_clears": eclears, "totalclears": totalclears, "rate": rate_per_hour, "sessioncookiethingyOwO": random.randint(100000,999999)})
     
 @app.get("/uwuimsogayyy")
-def home():
+def gaygay():
     return jsonify({"OwO": "UwU"})
 
 

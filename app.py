@@ -56,6 +56,7 @@ def run_updater():
             log.info("Connected to Scratch cloud project %s", PROJECT_ID)
 
             while True:
+                print("please wait for update stats....")
                 response = http.get(API_URL, timeout=15)
                 response.raise_for_status()
                 data = response.json()
@@ -79,6 +80,7 @@ def run_updater():
                 connection.set_var("ECLEARS", eclears)
                 connection.set_var("TOTALCLEARS", totalclears)
                 connection.set_var("PERHOUR", int(round(rate_per_hour)))
+                print("Vars updated")
                 log.info("Updated ECLEARS=%s TOTALCLEARS=%s PERHOUR=%s", eclears, totalclears, int(round(rate_per_hour)))
                 time.sleep(UPDATE_INTERVAL)
 
